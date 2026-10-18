@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "package": "com.example.virtualkb.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "MouseHandlerMixin",
+    "MouseHandlerAccessor",
+    "KeyMappingAccessor",
+    "VisualKeysRendererMixin",
+    "VisualKeysOpacityMixin",
+    "MinecraftMixin",
+    "ScreenCloseButtonMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

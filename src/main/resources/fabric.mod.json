@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "virtualkb",
+  "version": "${version}",
+  "name": "VirtualKB Input",
+  "description": "VisualKeys extension: mouse lock + click the VisualKeys keyboard + keyboard mouse substitute.\nTHIS MOD IS MADE BY AI",
+  "authors": ["Po_Cu", "AI:Deepseek"],
+  "license": "MIT",
+  "icon": "assets/virtualkb/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client":  [ "com.example.virtualkb.VirtualKeyboardClient" ],
+    "modmenu": [ "com.example.virtualkb.ModMenuIntegration" ]
+  },
+  "mixins": [
+    {
+      "config": "virtualkb.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.2",
+    "java": ">=25",
+    "fabric-api": "*",
+    "visualkeys": ">=0.0.11"
+  },
+  "recommends": {
+    "modmenu": "*"
+  }
+}

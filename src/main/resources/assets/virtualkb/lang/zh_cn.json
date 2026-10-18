@@ -1,0 +1,21 @@
+{
+  "title.virtualkb.config": "虚拟键盘输入配置",
+
+  "key.category.virtualkb.main": "虚拟键盘输入",
+  "category.virtualkb.general": "全局",
+
+  "option.virtualkb.enabled": "启用",
+  "tooltip.virtualkb.enabled": "锁定鼠标（光标保持可见），并点击虚拟键盘按键控制游戏。",
+  "option.virtualkb.opacity": "键盘透明度",
+  "tooltip.virtualkb.opacity": "虚拟键盘的不透明度（0 = 透明，1 = 不透明）。",
+
+  "key.virtualkb.lookup": "视角上移",
+  "key.virtualkb.lookdown": "视角下移",
+  "key.virtualkb.lookleft": "视角左移",
+  "key.virtualkb.lookright": "视角右移",
+  "key.virtualkb.click_left": "左键",
+  "key.virtualkb.click_middle": "中键",
+  "key.virtualkb.click_right": "右键",
+  "key.virtualkb.scroll_up": "滚轮上",
+  "key.virtualkb.scroll_down": "滚轮下"
+}

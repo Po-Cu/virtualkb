@@ -1,0 +1,21 @@
+{
+  "title.virtualkb.config": "VisualKeys Input Config",
+
+  "key.category.virtualkb.main": "VisualKeys Input",
+  "category.virtualkb.general": "General",
+
+  "option.virtualkb.enabled": "Enable",
+  "tooltip.virtualkb.enabled": "Lock the mouse (cursor stays visible) and control the game with keys + by clicking the VisualKeys keyboard.",
+  "option.virtualkb.opacity": "Keyboard Opacity",
+  "tooltip.virtualkb.opacity": "Opacity of the VisualKeys keyboard (0 = transparent, 1 = opaque).",
+
+  "key.virtualkb.lookup": "Look Up",
+  "key.virtualkb.lookdown": "Look Down",
+  "key.virtualkb.lookleft": "Look Left",
+  "key.virtualkb.lookright": "Look Right",
+  "key.virtualkb.click_left": "Left Click",
+  "key.virtualkb.click_middle": "Middle Click",
+  "key.virtualkb.click_right": "Right Click",
+  "key.virtualkb.scroll_up": "Scroll Up",
+  "key.virtualkb.scroll_down": "Scroll Down"
+}

@@ -1,0 +1,72 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+	id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+repositories {
+	// Mod Menu 发布仓库
+	maven { url = 'https://maven.terraformersmc.com/releases/' }
+	// Cloth Config 发布仓库
+	maven { url = 'https://maven.shedaniel.me/' }
+	// Modrinth Maven（VisualKeys 从这里发布）
+	maven { url = 'https://api.modrinth.com/maven' }
+}
+
+loom {
+	splitEnvironmentSourceSets()
+
+	mods {
+		"virtualkb" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+}
+
+dependencies {
+	// 版本号变量来自 gradle.properties
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	// 26.2 起 Mojang 官方映射已是默认，无需再写 mappings 行
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+	// Fabric API
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	// Mod Menu：编译期可用；运行期由 fabric.mod.json 的 recommends 声明（不强制、不打进 jar）
+	implementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+
+	// Cloth Config：运行时需要，并用 include 打进入我们自己的 jar
+	implementation "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
+	include "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
+
+	// VisualKeys：本模组是其扩展（运行时必需）
+	implementation "maven.modrinth:visualkeys:${project.visualkeys_version}"
+}
+
+processResources {
+	def version = project.version
+	inputs.property "version", version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25          // 强制 Java 25 字节码级别
+}
+
+java {
+	// Loom 会自动把 sourcesJar 挂到 build 任务上
+	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
