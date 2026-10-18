@@ -7,7 +7,7 @@
   "authors": ["Po_Cu", "AI:Deepseek"],
   "contact": {
     "sources":"https://github.com/Po-Cu/virtualkb"
-  }
+  },
   "license": "MIT",
   "icon": "assets/virtualkb/icon.png",
   "environment": "client",
