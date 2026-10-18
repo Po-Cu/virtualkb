@@ -7,7 +7,6 @@ import io.github.dimaskama.visualkeys.client.KeyboardRenderOptions;
 import io.github.dimaskama.visualkeys.client.VisualKeys;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.Screenshot;
 import net.minecraft.client.gui.screens.PauseScreen;
 
 public class VisualKeysClick {
@@ -38,7 +37,13 @@ public class VisualKeysClick {
         // ESC 打开暂停菜单/关闭界面；F3 切换调试界面（DebugScreenEntryList.toggleDebugOverlay）。
         if (pressed && scancode == InputConstants.KEY_ESCAPE) { handleEscape(); return; }
         if (pressed && scancode == InputConstants.KEY_F3) { handleF3(); return; }
-        if (pressed && scancode == InputConstants.KEY_F2) { handleScreenshot(); return; }
+        // F2 截图 / F11 全屏 / O 好友列表：都走原版 handleGlobalKeyPress（事件匹配式）
+        if (pressed && (scancode == InputConstants.KEY_F2
+                || scancode == InputConstants.KEY_F11
+                || scancode == InputConstants.KEY_O)) {
+            handleGlobalKey(scancode);
+            return;
+        }
 
         InputConstants.Key boundKey = findBoundKey(scancode);
         if (boundKey != null) {
@@ -79,9 +84,11 @@ public class VisualKeysClick {
         Minecraft.getInstance().debugEntries.toggleDebugOverlay();
     }
 
-    private static void handleScreenshot() {
-        // F2 截图：直接调用 Screenshot.grab（第二个参数 false = 普通截图，非全景）
-        Screenshot.grab(Minecraft.getInstance(), false);
+    private static void handleGlobalKey(int scancode) {
+        // 把 scancode 转成 InputConstants.Key，交给原版 handleGlobalKeyPress 处理
+        // （F2=截图、F11=全屏、O=好友列表；toggleFullscreen/toggleFriendsScreen 都是 private）
+        Minecraft mc = Minecraft.getInstance();
+        mc.handleGlobalKeyPress(InputConstants.Type.KEYSYM.getOrCreate(scancode), true);
     }
 
     // —— 按住状态与重复 ——
