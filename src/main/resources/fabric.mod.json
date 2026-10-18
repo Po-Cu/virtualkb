@@ -6,7 +6,8 @@
   "description": "VisualKeys extension: mouse lock + click the VisualKeys keyboard + keyboard mouse substitute.\nTHIS MOD IS MADE BY AI",
   "authors": ["Po_Cu", "AI:Deepseek"],
   "contact": {
-    "sources":"https://github.com/Po-Cu/virtualkb"
+    "sources":"https://github.com/Po-Cu/virtualkb",
+    "modrinth": "https://modrinth.com/project/virtualkb"
   },
   "license": "MIT",
   "icon": "assets/virtualkb/icon.png",
